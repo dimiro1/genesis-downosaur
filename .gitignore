@@ -1,0 +1,7 @@
+out/*
+src/boot/rom_head.h
+src/boot/sega.s
+res/gfx.h
+.DS_Store
+
+nbproject/private/
