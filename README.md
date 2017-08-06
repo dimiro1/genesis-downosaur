@@ -15,3 +15,8 @@ Compile the game
 ```sh
 $ make build
 ```
+
+# Credits
+
+https://github.com/kubilus1/gendev
+https://github.com/Stephane-D/SGDK
