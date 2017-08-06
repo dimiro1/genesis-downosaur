@@ -1,16 +1,17 @@
-.PHONY: clean build
-
-DOCKER := $(shell which docker)
+.PHONY: clean build run
 
 all: build
 
 docker:
-	${DOCKER} build -t gendev .
+	docker build -t gendev .
+
+run:
+	blastem out/rom.bin 320 224
 
 build:
-	${DOCKER} run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen all
+	docker run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen all
 
 clean:
-	${DOCKER} run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen clean
-	rm src/boot/rom_head.h
-	rm src/boot/sega.s
+	docker run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen clean
+	rm -f src/boot/rom_head.h
+	rm -f src/boot/sega.s
