@@ -1,8 +1,8 @@
 #include <genesis.h>
 #include "../res/gfx.h"
 
-fix32 groundSpeed = 1;
-fix32 backgroundSpeed = 1;
+fix32 groundSpeed = 0;
+fix32 backgroundSpeed = 0;
 
 int main(void)
 {
@@ -23,8 +23,8 @@ int main(void)
         VDP_setHorizontalScroll(PLAN_A, fix32ToInt(groundSpeed));
         VDP_setHorizontalScroll(PLAN_B, fix32ToInt(backgroundSpeed));
 
-        groundSpeed -= FIX32(3);
-        backgroundSpeed -= FIX32(1);
+        groundSpeed -= FIX32(3.5);
+        backgroundSpeed -= FIX32(0.5);
         VDP_waitVSync();
     }
 
