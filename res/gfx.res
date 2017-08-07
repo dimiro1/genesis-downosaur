@@ -1,3 +1,2 @@
-IMAGE bga_image "gfx/bga.png" -1
-IMAGE bgb_image "gfx/bgb.png" -1
-IMAGE horizon_image "gfx/1x-horizon.png" -1
+IMAGE ground_image "gfx/ground.png" -1
+IMAGE clouds_image "gfx/clouds.png" -1

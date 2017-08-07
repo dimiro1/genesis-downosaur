@@ -1,23 +1,30 @@
 #include <genesis.h>
 #include "../res/gfx.h"
 
+fix32 groundSpeed = 1;
+fix32 backgroundSpeed = 1;
+
 int main(void)
 {
     SYS_disableInts();
 
-    VDP_setPaletteColors(0, (u16*) palette_green, 64);
+    VDP_setScreenWidth320();
 
-    VDP_drawImageEx(PLAN_A, &horizon_image, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX), 0, 26, FALSE, TRUE);
-    VDP_drawText("Hello World", 15, 12);
+    VDP_setPaletteColors(0, (u16*) palette_black, 64);
+
+    VDP_drawImageEx(PLAN_A, &ground_image, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX), 0, 26, FALSE, TRUE);
+    VDP_drawImageEx(PLAN_B, &clouds_image, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + ground_image.tileset->numTile), 0, 10, FALSE, TRUE);
 
     SYS_enableInts();
 
-    VDP_setPalette(PAL0, horizon_image.palette->data);
+    VDP_setPalette(PAL0, ground_image.palette->data);
 
-    fix32 i = 0;
     while (1) {
-        VDP_setHorizontalScroll(PLAN_A, fix32ToInt(i));
-        i -= FIX32(1.5);
+        VDP_setHorizontalScroll(PLAN_A, fix32ToInt(groundSpeed));
+        VDP_setHorizontalScroll(PLAN_B, fix32ToInt(backgroundSpeed));
+
+        groundSpeed -= FIX32(3);
+        backgroundSpeed -= FIX32(1);
         VDP_waitVSync();
     }
 
