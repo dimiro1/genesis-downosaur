@@ -15,3 +15,4 @@ clean:
 	docker run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen clean
 	rm -f src/boot/rom_head.h
 	rm -f src/boot/sega.s
+	rm -f res/*.h
