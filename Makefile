@@ -6,7 +6,7 @@ docker:
 	docker build -t gendev .
 
 run:
-	blastem out/rom.bin 320 224
+	dgen -g 1 out/rom.bin
 
 build:
 	docker run --rm -it -v $(PWD):/game gendev make -f /opt/gendev/sgdk/mkfiles/makefile.gen all
